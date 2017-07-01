@@ -15,6 +15,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cfg_exemple_explication' => 'Explication de cet exemple',
 	'cfg_titre_parametrages' => 'Paramétrages',
 
+	// N
+	'nom_formulaire_configuration_champs_extras_auteurs' => 'Champs extras auteur',
+
 	// T
 	'titre_page_configurer_reservations_champs_extras' => 'Réservations Champs Extras',
 );
