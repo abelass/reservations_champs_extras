@@ -9,13 +9,13 @@
 >
 	<!--
 		Paquet généré le 2017-07-01 13:05:06
-		(Vous pouvez bien entendu supprimer ces commentaires) 
+		(Vous pouvez bien entendu supprimer ces commentaires)
 	-->
 
 	<nom>Réservations Champs Extras</nom>
 	<!-- Permet d&#039;adapter le comportement des champs extras auteur et reservation -->
 
-	<!-- cette balise peut être présente plusieurs fois s'il y a plusieurs auteurs --> 
+	<!-- cette balise peut être présente plusieurs fois s'il y a plusieurs auteurs -->
 	<auteur>Rainer</auteur>
 
 	<licence>GNU/GPL</licence>
@@ -29,17 +29,19 @@
 		* pipelines
 		<pipeline nom="autoriser" inclure="reservations_champs_extras_autorisations.php" />
 		<pipeline nom="insert_head" inclure="reservations_champs_extras_pipelines.php" />
-		* declarer un pipeline 
+		* declarer un pipeline
 		<pipeline nom="mon_pipeline" action="" />
 		* parents de menus de SPIP :
 				menu_accueil (à éviter), menu_edition, menu_publication,
-				menu_activite, menu_squelette, menu_administration, menu_configuration 
+				menu_activite, menu_squelette, menu_administration, menu_configuration
 		<menu nom="reservations_champs_extras" titre="reservations_champs_extras:reservations_champs_extras_titre" parent="menu_edition"  icone="images/reservations_champs_extras-16.png" />
-		* parents d'onglets... configuration, plugins, statistiques, ... 
+		* parents d'onglets... configuration, plugins, statistiques, ...
 		<onglet nom="reservations_champs_extras" titre="reservations_champs_extras:reservations_champs_extras_titre" parent="configuration" icone="images/reservations_champs_extras-24.png" />
 	-->
+	<necessite nom="saisies" compatibilite="[2.18.18;]" />
+	<necessite nom="cextras" compatibilite="[3.11.3;]" />
+	<necessite nom="reservations_formulaires" compatibilite="[1.0.0;]" />
 
-
-
+	<pipeline nom="formulaire_charger" inclure="reservations_champs_extras_pipelines.php" />
 
 </paquet>
