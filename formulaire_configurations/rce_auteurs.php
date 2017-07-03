@@ -20,7 +20,7 @@ function formulaire_configuration_rce_auteurs_dist() {
 					'nom' => 'champs_extras_auteurs_active',
 					'label' => _T('reservations_champs_extras:champs_extras_auteurs_active_label'),
 					'obligatoire' => 'oui'
-				)
+				),
 			),
 		),
 	);

@@ -40,6 +40,7 @@
 	-->
 	<necessite nom="saisies" compatibilite="[2.18.18;]" />
 	<necessite nom="cextras" compatibilite="[3.11.3;]" />
+	<necessite nom="reservation_evenement" compatibilite="[1.26.0;]" />
 	<necessite nom="reservations_formulaires" compatibilite="[1.0.0;]" />
 
 	<pipeline nom="formulaire_charger" inclure="reservations_champs_extras_pipelines.php" />
