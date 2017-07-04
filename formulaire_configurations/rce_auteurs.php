@@ -10,8 +10,8 @@
  * @package    SPIP\Reservations_champs_extras\Formulaire_configuration
  */
 
-function formulaire_configuration_rce_auteurs_dist() {
-	$return = array (
+function formulaire_configurations_rce_auteurs_dist($valeurs) {
+	return array (
 		'nom' => _T('reservations_champs_extras:nom_formulaire_configuration_champs_extras_auteurs'),
 		'saisies' => array (
 			array (
@@ -24,4 +24,5 @@ function formulaire_configuration_rce_auteurs_dist() {
 			),
 		),
 	);
+
 }
