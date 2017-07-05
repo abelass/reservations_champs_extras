@@ -8,14 +8,22 @@
  * @licence    GNU/GPL
  * @package    SPIP\Reservations_champs_extras\Inc
  */
-function rce_saisies_objet($objet) {
 
+/**
+ * Pépare les saisies our l'objet demandé
+ *
+ * @param string $objet.
+ *        l'objet
+ *
+ * @return array
+ *        Les saisies.
+ */
+function rce_saisies_objet($objet) {
 	include_spip('cextras_pipelines');
+
 	$table = table_objet_sql($objet);
-	//print $table;
 	$desc = lister_tables_objets_sql($table);
 	$champs_extras = champs_extras_objet($table);
-	// print_r($champs_extras);
 	$saisies = array(
 		'saisies' => array(
 			'saisie' => 'fieldset',
@@ -27,7 +35,6 @@ function rce_saisies_objet($objet) {
 	);
 
 	foreach ($champs_extras as $index => $saisie) {
-
 		$saisies['saisies']['saisies'][] = array(
 			'saisie' => 'fieldset',
 			'options' => array(
@@ -53,7 +60,6 @@ function rce_saisies_objet($objet) {
 						'defaut' => $saisie['options']['obligatoire']
 					)
 				)
-
 			)
 		);
 	}
