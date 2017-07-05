@@ -47,8 +47,7 @@ function rce_saisies_objet($objet) {
 					'options' => array(
 						'nom' => $objet . '_' . $saisie['options']['nom'] . '_active',
 						'label' => _T('reservations_champs_extras:champs_extras_active_label'),
-						'obligatoire' => 'oui',
-						'defaut' => 'on'
+						'defaut' => 'on',
 					)
 				),
 				array(
@@ -56,8 +55,8 @@ function rce_saisies_objet($objet) {
 					'options' => array(
 						'nom' => $objet . '_' . $saisie['options']['nom'] . '_obligatoire',
 						'label' => _T('reservations_champs_extras:champs_extras_obligatoire_label'),
-						'obligatoire' => 'oui',
-						'defaut' => $saisie['options']['obligatoire']
+						'defaut' => $saisie['options']['obligatoire'],
+						'afficher_si' => '@' . $objet . '_' . $saisie['options']['nom'] . '_active' . '@ == "on"',
 					)
 				)
 			)
