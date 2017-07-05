@@ -12,7 +12,7 @@ function rce_saisies_objet($objet) {
 
 	include_spip('cextras_pipelines');
 	$table = table_objet_sql($objet);
-	print $table;
+	//print $table;
 	$desc = lister_tables_objets_sql($table);
 	$champs_extras = champs_extras_objet($table);
 	// print_r($champs_extras);
