@@ -35,6 +35,7 @@ function rce_saisies_objet($objet) {
 	);
 
 	foreach ($champs_extras as $index => $saisie) {
+		$nom = $saisie['options']['nom'];
 		$saisies['saisies']['saisies'][] = array(
 			'saisie' => 'fieldset',
 			'options' => array(
@@ -45,7 +46,7 @@ function rce_saisies_objet($objet) {
 				array(
 					'saisie' => 'oui_non',
 					'options' => array(
-						'nom' => $objet . '_' . $saisie['options']['nom'] . '_active',
+						'nom' => $objet . '_' . $nom. '_active',
 						'label' => _T('reservations_champs_extras:champs_extras_active_label'),
 						'defaut' => 'on',
 					)
@@ -53,10 +54,10 @@ function rce_saisies_objet($objet) {
 				array(
 					'saisie' => 'oui_non',
 					'options' => array(
-						'nom' => $objet . '_' . $saisie['options']['nom'] . '_obligatoire',
+						'nom' => $objet . '_' . $nom. '_obligatoire',
 						'label' => _T('reservations_champs_extras:champs_extras_obligatoire_label'),
 						'defaut' => $saisie['options']['obligatoire'],
-						'afficher_si' => '@' . $objet . '_' . $saisie['options']['nom'] . '_active' . '@ == "on"',
+						'afficher_si' => '@' . $objet . '_' . $nom. '_active' . '@ == "on"',
 					)
 				)
 			)
