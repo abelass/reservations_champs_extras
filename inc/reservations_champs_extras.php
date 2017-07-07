@@ -10,7 +10,7 @@
  */
 
 /**
- * Pépare les saisies our l'objet demandé
+ * Pépare les saisies pour l'objet demandé
  *
  * @param string $objet.
  *        l'objet
@@ -78,12 +78,24 @@ function rce_saisies_objet($objet) {
 	return $saisies;
 }
 
-
-function rce_configuration_charger($type, $champs_extras, $configuration, $objet) {
+/**
+ * Charge la configuration dans les formulaires.
+ *
+ * @param array $champs_extras
+ *        La définition des champs extras utilisés.
+ * @param array $configuration
+ *        La configuration 'a utiliser.
+ * @param string $objet.
+          l'objet des champs extras.
+ *
+ * @return array
+ *        la définition des champs extras.
+ */
+function rce_configuration_charger($champs_extras, $configuration, $objet) {
 
 	foreach ($champs_extras AS $index => $saisie) {
-		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND $configuration[$objet . '_' . $saisie['options']['nom'] . '_active'] == 'off') {
-				print_r($champs_extras[$index]);
+		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND 
+			$configuration[$objet . '_' . $saisie['options']['nom'] . '_active'] == 'off') {
 			unset($champs_extras[$index]);
 		}
 		elseif(isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_obligatoire'])) {

@@ -10,8 +10,16 @@
  */
 include_spip('inc/reservations_champs_extras');
 
+/**
+ * Pépare les saisies pour l'objet reservation.
+ *
+ * @param array $valeurs.
+ *        Les valeurs par défaut du formulaire.
+ *
+ * @return array
+ *        Les valeurs.
+ */
 function formulaire_configurations_rce_reservations_dist($valeurs) {
-
 	$saisies = rce_saisies_objet('reservation');
 
 	return array (
@@ -20,8 +28,21 @@ function formulaire_configurations_rce_reservations_dist($valeurs) {
 	);
 }
 
+/**
+ * Charge la configuration dans les formulaires.
+ *
+ * @param string $type
+ *        Le type de configuration.
+ * @param array $valeurs
+ *        Les valeurs par défaut du formulaire.
+ * @param array $configuration
+          La définition 'a appliquer'.
+ *
+ * @return array
+ *        Les valeurs par défaut du formulaire.
+ */
 function formulaire_configurations_rce_reservations_charger_dist($type, $valeurs, $configuration) {
 	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_reservations']);
-	$valeurs['champs_extras_reservations'] = rce_configuration_charger($type, $champs_extras, $configuration, 'reservation');
+	$valeurs['champs_extras_reservations'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
 	return $valeurs;
 }
