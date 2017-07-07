@@ -58,6 +58,7 @@ function rce_saisies_objet($objet) {
 						'nom' => $objet . '_' . $nom. '_active',
 						'label' => _T('reservations_champs_extras:champs_extras_active_label'),
 						'defaut' => 'on',
+						'valeur_non' => 'off',
 					)
 				),
 				array(
@@ -66,6 +67,7 @@ function rce_saisies_objet($objet) {
 						'nom' => $objet . '_' . $nom. '_obligatoire',
 						'label' => _T('reservations_champs_extras:champs_extras_obligatoire_label'),
 						'defaut' => $saisie['options']['obligatoire'],
+						'valeur_non' => 'off',
 						'afficher_si' => '@' . $objet . '_' . $nom. '_active' . '@ == "on"',
 					)
 				)
@@ -74,4 +76,19 @@ function rce_saisies_objet($objet) {
 	}
 
 	return $saisies;
+}
+
+
+function rce_configuration_charger($type, $champs_extras, $configuration, $objet) {
+
+	foreach ($champs_extras AS $index => $saisie) {
+		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND $configuration[$objet . '_' . $saisie['options']['nom'] . '_active'] == 'off') {
+				print_r($champs_extras[$index]);
+			unset($champs_extras[$index]);
+		}
+		elseif(isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_obligatoire'])) {
+			$champs_extras[$index]['options']['obligatoire'] = $configuration[$objet . '_' . $saisie['options']['nom'] . '_obligatoire'] == 'on' ? 'oui' : '';
+		}
+	}
+	return $champs_extras;
 }
