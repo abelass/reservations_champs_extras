@@ -30,8 +30,17 @@ function rce_saisies_objet($objet) {
 			'options' => array(
 				'nom' => 'specifique',
 				'label' => _T($desc['texte_objets'])
-			)
-		)
+			),
+			'saisies' => array(
+				array(
+					'saisie' => 'hidden',
+					'options' => array(
+						'nom' => 'traitement',
+						'valeur_forcee' => 'options',
+					),
+				),
+			),
+		),
 	);
 
 	foreach ($champs_extras as $index => $saisie) {
