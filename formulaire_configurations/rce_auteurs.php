@@ -12,7 +12,7 @@
  include_spip('inc/reservations_champs_extras');
  
 /**
- * Pépare les saisies pour l'objet auteur'
+ * Prépare les saisies pour l'objet auteur.
  *
  * @param array $valeurs.
  *        Les valeurs par défaut du formulaire.

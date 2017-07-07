@@ -10,7 +10,7 @@
  */
 
 /**
- * Pépare les saisies pour l'objet demandé
+ * Prépare les saisies pour l'objet demandé
  *
  * @param string $objet.
  *        l'objet
