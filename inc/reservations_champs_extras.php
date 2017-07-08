@@ -24,8 +24,8 @@ function rce_saisies_objet($objet) {
 	$table = table_objet_sql($objet);
 	$desc = lister_tables_objets_sql($table);
 	$champs_extras = champs_extras_objet($table);
-	$saisies = array(
-		'saisies' => array(
+	$saisies =
+		array(
 			'saisie' => 'fieldset',
 			'options' => array(
 				'nom' => 'specifique',
@@ -40,15 +40,15 @@ function rce_saisies_objet($objet) {
 					),
 				),
 			),
-		),
+
 	);
 
 	foreach ($champs_extras as $index => $saisie) {
 		$nom = $saisie['options']['nom'];
-		$saisies['saisies']['saisies'][] = array(
+		$saisies['saisies'][] = array(
 			'saisie' => 'fieldset',
 			'options' => array(
-				'nom' => 'specifique',
+				'nom' => 'reservation',
 				'label' => $saisie['options']['label']
 			),
 			'saisies' => array(
@@ -86,7 +86,7 @@ function rce_saisies_objet($objet) {
  * @param array $configuration
  *        La configuration 'a utiliser.
  * @param string $objet.
-          l'objet des champs extras.
+					l'objet des champs extras.
  *
  * @return array
  *        la définition des champs extras.
@@ -94,7 +94,7 @@ function rce_saisies_objet($objet) {
 function rce_configuration_charger($champs_extras, $configuration, $objet) {
 
 	foreach ($champs_extras AS $index => $saisie) {
-		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND 
+		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND
 			$configuration[$objet . '_' . $saisie['options']['nom'] . '_active'] == 'off') {
 			unset($champs_extras[$index]);
 		}
