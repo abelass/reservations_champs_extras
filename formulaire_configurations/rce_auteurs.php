@@ -8,9 +8,9 @@
  * @licence    GNU/GPL
  * @package    SPIP\Reservations_champs_extras\Formulaire_configuration
  */
- 
- include_spip('inc/reservations_champs_extras');
- 
+
+include_spip('inc/reservations_champs_extras');
+
 /**
  * Prépare les saisies pour l'objet auteur.
  *
@@ -36,7 +36,7 @@ function formulaire_configurations_rce_auteurs_dist($valeurs) {
  * @param array $valeurs
  *        Les valeurs par défaut du formulaire.
  * @param array $configuration
-          La définition 'a appliquer'.
+					La définition 'a appliquer'.
  *
  * @return array
  *        Les valeurs par défaut du formulaire.
@@ -44,5 +44,25 @@ function formulaire_configurations_rce_auteurs_dist($valeurs) {
 function formulaire_configurations_rce_auteurs_charger_dist($type, $valeurs, $configuration) {
 	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_auteurs']);
 	$valeurs['champs_extras_auteurs'] = rce_configuration_charger($champs_extras, $configuration, 'auteur');
+	return $valeurs;
+}
+
+/**
+ * Implémente le vérifications des champs extras auteur dans le formulaire reservation.
+ *
+ * @param string $type
+ *        Le type de configuration.
+ * @param array $valeurs
+ *        Les valeurs par défaut du formulaire.
+ * @param array $configuration
+La définition 'a appliquer'.
+ *
+ * @return array
+ *        Les valeurs par défaut du formulaire.
+ */
+function formulaire_configurations_rce_auteurs_verifier_dist($type, $valeurs, $configuration) {
+
+	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_auteurs']);
+	$valeurs['champs_extras_auteurs'] = rce_verifier_champs($configuration, 'auteur');
 	return $valeurs;
 }

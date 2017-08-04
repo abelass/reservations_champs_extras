@@ -36,7 +36,7 @@ function formulaire_configurations_rce_reservations_dist($valeurs) {
  * @param array $valeurs
  *        Les valeurs par défaut du formulaire.
  * @param array $configuration
-          La définition 'a appliquer'.
+					La définition 'a appliquer'.
  *
  * @return array
  *        Les valeurs par défaut du formulaire.
@@ -44,5 +44,24 @@ function formulaire_configurations_rce_reservations_dist($valeurs) {
 function formulaire_configurations_rce_reservations_charger_dist($type, $valeurs, $configuration) {
 	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_reservations']);
 	$valeurs['champs_extras_reservations'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
+	return $valeurs;
+}
+
+/**
+ * Implémente le vérifications des champs extras reservation dans le formulaire reservation et éditer reservation.
+ *
+ * @param string $type
+ *        Le type de configuration.
+ * @param array $valeurs
+ *        Les valeurs par défaut du formulaire.
+ * @param array $configuration
+La définition 'a appliquer'.
+ *
+ * @return array
+ *        Les valeurs par défaut du formulaire.
+ */
+function formulaire_configurations_rce_reservations_verifier_dist($type, $valeurs, $configuration) {
+	print_r($configuration);
+	$valeurs['champs_extras_auteurs'] = rce_verifier_champs($configuration, 'auteur');
 	return $valeurs;
 }

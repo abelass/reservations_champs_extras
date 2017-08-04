@@ -104,3 +104,32 @@ function rce_configuration_charger($champs_extras, $configuration, $objet) {
 	}
 	return $champs_extras;
 }
+
+/**
+ * Implémente le vérifications spécifique dans le formulaire
+ *.
+ * @param array $configuration
+ *        La configuration 'a utiliser.
+ * @param string $objet.
+l'objet des champs extras.
+ *
+ * @return array
+ *        la définition des champs extras.
+ */
+function rce_verifier_champs($configuration, $objet) {
+	print_r($configuration);
+	if (isset($configuration[$objet])) {
+		$erreurs = array();
+		foreach ($configuration[$objet] AS $champ => $valeur) {
+			if (preg_match('\_obligatoire|', $champ, $match)) {
+				$champ_obligatoire = str_replace($match[0]);
+				print_r($champ_obligatoire);
+				if ($valeur == 'on' && !_request($champ_obligatoire)) {
+					$erreurs[$champ_obligatoire] = _T("info_obligatoire");
+				}
+			}
+		}
+	}
+	return $erreurs;
+}
+
