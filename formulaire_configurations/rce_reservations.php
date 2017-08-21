@@ -61,7 +61,6 @@ La définition 'a appliquer'.
  *        Les valeurs par défaut du formulaire.
  */
 function formulaire_configurations_rce_reservations_verifier_dist($type, $valeurs, $configuration) {
-	print_r($configuration);
-	$valeurs['champs_extras_auteurs'] = rce_verifier_champs($configuration, 'auteur');
+	$valeurs = rce_verifier_champs($valeurs, $configuration, 'reservation');
 	return $valeurs;
 }

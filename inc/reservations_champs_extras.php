@@ -102,6 +102,7 @@ function rce_configuration_charger($champs_extras, $configuration, $objet) {
 			$champs_extras[$index]['options']['obligatoire'] = $configuration[$objet . '_' . $saisie['options']['nom'] . '_obligatoire'] == 'on' ? 'oui' : '';
 		}
 	}
+
 	return $champs_extras;
 }
 
@@ -116,15 +117,16 @@ l'objet des champs extras.
  * @return array
  *        la définition des champs extras.
  */
-function rce_verifier_champs($configuration, $objet) {
-	print_r($configuration);
-	if (isset($configuration[$objet])) {
-		$erreurs = array();
-		foreach ($configuration[$objet] AS $champ => $valeur) {
-			if (preg_match('\_obligatoire|', $champ, $match)) {
-				$champ_obligatoire = str_replace($match[0]);
-				print_r($champ_obligatoire);
+function rce_verifier_champs($erreurs, $configuration, $objet) {
+	$obligatoire_auteur = FALSE;
+	if (isset($configuration)) {
+		foreach ($configuration AS $champ => $valeur) {
+			if (preg_match('|_obligatoire|', $champ, $match)) {
+				$champ_obligatoire = preg_replace(array('|' . $match[0] . '|','|' .$objet. '_|'), '', $champ);
 				if ($valeur == 'on' && !_request($champ_obligatoire)) {
+					if ($objet == 'auteur') {
+						set_request('modifier_donnees_auteur', array(1));
+					}
 					$erreurs[$champ_obligatoire] = _T("info_obligatoire");
 				}
 			}

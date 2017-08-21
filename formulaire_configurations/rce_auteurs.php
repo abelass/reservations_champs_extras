@@ -61,8 +61,6 @@ La définition 'a appliquer'.
  *        Les valeurs par défaut du formulaire.
  */
 function formulaire_configurations_rce_auteurs_verifier_dist($type, $valeurs, $configuration) {
-
-	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_auteurs']);
-	$valeurs['champs_extras_auteurs'] = rce_verifier_champs($configuration, 'auteur');
+	$valeurs = rce_verifier_champs($valeurs, $configuration, 'auteur');
 	return $valeurs;
 }
