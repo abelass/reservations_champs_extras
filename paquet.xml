@@ -43,4 +43,6 @@
 	<necessite nom="reservation_evenement" compatibilite="[1.26.0;]" />
 	<necessite nom="reservations_formulaires" compatibilite="[1.0.0;]" />
 
+	<pipeline nom="recuperer_fond" inclure="reservations_champs_extras_pipelines.php" />
+
 </paquet>
