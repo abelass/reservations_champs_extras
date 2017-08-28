@@ -92,7 +92,11 @@ function rce_saisies_objet($objet) {
  *        la définition des champs extras.
  */
 function rce_configuration_charger($champs_extras, $configuration, $objet) {
-
+	print '<pre>';
+	print_r($champs_extras);
+	//print_r($configuration);
+print_r($objet);
+print '</pre>';
 	foreach ($champs_extras AS $index => $saisie) {
 		if (isset($configuration[$objet . '_' . $saisie['options']['nom'] . '_active']) AND
 			$configuration[$objet . '_' . $saisie['options']['nom'] . '_active'] == 'off') {
