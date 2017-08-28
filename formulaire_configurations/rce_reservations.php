@@ -54,9 +54,6 @@ function formulaire_configurations_rce_reservations_charger_dist($type, $valeurs
 
 	$valeurs['champs_extras_reservations'] = $valeurs['saisies'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
 
-	print '<pre>';
-	//print_r($valeurs);
-	print '</pre>';
 	return $valeurs;
 }
 
