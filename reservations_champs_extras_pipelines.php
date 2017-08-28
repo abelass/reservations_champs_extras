@@ -14,16 +14,24 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 function reservations_champs_extras_recuperer_fond($flux) {
-	include_spip('inc/reservations_champs_extras');
 	$fond = $flux['args']['fond'];
 	$contexte = $flux['data']['contexte'];
+
 
 	if ($fond == 'inclure/generer_saisies' &&
 			isset($contexte['_action']) &&
 			isset($contexte['_action'][0]) &&
-			$contexte['_action'][0] == 'editer_reservation') {
+			isset($contexte['champs_extras_reservations']) &&
+			$contexte['_action'][0] == 'editer_reservation' &&
+			!isset($contexte['reloaded']) AND
+			include_spip('inc/reservations_champs_extras') &&
+			tester_champs_extras_objet($contexte['champs_extras_reservations'], $contexte['saisies'])) {
+				print 'ok';
 
-		$flux['data']['texte'] = recuperer_fond('inc/reservations_champs_extras', $flux['data']['contexte']['saisies']);
+
+		$flux['data']['contexte']['saisies'] = $contexte['champs_extras_reservations'];
+		$flux['data']['contexte']['reloaded'] = 'reservations_champs_extras';
+		$flux['data']['texte'] = recuperer_fond('inclure/generer_saisies', $flux['data']['contexte']);
 	}
 
 

@@ -42,8 +42,21 @@ function formulaire_configurations_rce_reservations_dist($valeurs) {
  *        Les valeurs par défaut du formulaire.
  */
 function formulaire_configurations_rce_reservations_charger_dist($type, $valeurs, $configuration) {
-	$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_reservations']);
-	$valeurs['champs_extras_reservations'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
+	if (isset($valeurs['champs_extras_reservations'])) {
+		$champs_extras = saisies_lister_par_nom($valeurs['champs_extras_reservations']);
+	}
+	else {
+
+		include_spip('inc/cextras');
+		//$champs_extras_tout = cextras_objets_valides();
+		$champs_extras = cextras_obtenir_saisies_champs_extras('reservation');
+	}
+
+	$valeurs['champs_extras_reservations'] = $valeurs['saisies'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
+
+	print '<pre>';
+	//print_r($valeurs);
+	print '</pre>';
 	return $valeurs;
 }
 
