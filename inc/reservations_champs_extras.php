@@ -24,8 +24,7 @@ function rce_saisies_objet($objet) {
 	$table = table_objet_sql($objet);
 	$desc = lister_tables_objets_sql($table);
 	$champs_extras = champs_extras_objet($table);
-	$saisies =
-		array(
+	$saisies = array(
 			'saisie' => 'fieldset',
 			'options' => array(
 				'nom' => 'specifique',
