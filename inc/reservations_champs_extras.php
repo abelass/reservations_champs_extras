@@ -40,8 +40,7 @@ function rce_saisies_objet($objet) {
 					),
 				),
 			),
-
-	);
+		);
 
 	foreach ($champs_extras as $index => $saisie) {
 		$nom = $saisie['options']['nom'];
