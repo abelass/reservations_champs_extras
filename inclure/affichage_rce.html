@@ -1,0 +1,20 @@
+#SET{objets,#OBJET|rce_noms_champs{#ENV{configuration}}}
+
+<B_affichage>
+<ul class="liste configurations">
+<BOUCLE_affichage(DATA) {source tableau,#GET{objets}}>
+	<li><span class="champ-extras"><em>#VALEUR</strong></em>
+		<ul>
+			<li>
+				<span class="champ-label"><:reservations_champs_extras:champs_extras_active_label:></span>
+				<span class="valeur">[(#ENV{configuration}|table_valeur{[(#OBJET|concat{_}|concat{#CLE}|concat{_active})]})]</span>
+			</li>
+			<li>
+				<span class="champ-label"><:reservations_champs_extras:champs_extras_obligatoire_label:></span>
+				<span class="valeur">[(#ENV{configuration}|table_valeur{[(#OBJET|concat{_}|concat{#CLE}|concat{_obligatoire})]})]</span>
+			</li>
+		</ul>
+	</li>
+</BOUCLE_affichage>
+</ul>
+</B_affichage>

@@ -11,8 +11,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'reservations_champs_extras_titre' => 'Réservations Champs Extras',
 
 	// C
-	'champs_extras_active_label' => 'Champ activé ?',
-	'champs_extras_obligatoire_label' => 'Obligatoire ?',
+	'champs_extras_active_label' => 'Champ activé :',
+	'champs_extras_obligatoire_label' => 'Champ obligatoire :',
 	'cfg_exemple' => 'Exemple',
 	'cfg_exemple_explication' => 'Explication de cet exemple',
 	'cfg_titre_parametrages' => 'Paramétrages',
