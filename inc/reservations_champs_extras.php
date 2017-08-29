@@ -133,6 +133,17 @@ function rce_verifier_champs($erreurs, $configuration, $objet) {
 	return $erreurs;
 }
 
+/**
+ * Teste si une liste de champs correspond aux champs extras fournis.
+ *.
+ * @param array $champs
+ *        Les champs à tester.
+ * @param array $champs_extras.
+					les champs extras fournis.
+ *
+ * @return bool
+ *        true si la liste correspond.
+ */
 function tester_champs_extras_objet($champs, $champs_extras) {
 	$champs_extras_definis = array_keys($champs_extras);
 	foreach(array_keys($champs) AS $field) {
