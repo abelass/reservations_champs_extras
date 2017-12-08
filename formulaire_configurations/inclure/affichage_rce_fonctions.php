@@ -29,7 +29,7 @@ function rce_noms_champs($objet) {
 
 	$champs = array();
 	foreach ($saisies AS $champ => $donnees) {
-		$champs[$champ] = $donnees['options']['label'];
+		$champs[$champ] = extraire_multi($donnees['options']['label']);
 	}
 
 	return $champs;

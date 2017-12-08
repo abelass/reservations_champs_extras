@@ -48,11 +48,15 @@ function formulaire_configurations_rce_reservations_charger_dist($type, $valeurs
 	else {
 
 		include_spip('inc/cextras');
-		//$champs_extras_tout = cextras_objets_valides();
+
 		$champs_extras = cextras_obtenir_saisies_champs_extras('reservation');
 	}
 
-	$valeurs['champs_extras_reservations'] = $valeurs['saisies'] = rce_configuration_charger($champs_extras, $configuration, 'reservation');
+	$champs_extras_reservations = rce_configuration_charger($champs_extras, $configuration, 'reservation');
+
+	if (!_request('exec')) {
+		$valeurs['champs_extras_reservations'] = $champs_extras_reservations;
+	}
 
 	return $valeurs;
 }

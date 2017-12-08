@@ -13,6 +13,13 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
+/**
+ * Permet de compléter ou modifier le résultat de la compilation d’un squelette donné..
+ *
+ * @pipeline recuperer_fond
+ * @param  array $flux Données du pipeline
+ * @return array       Données du pipeline
+ */
 function reservations_champs_extras_recuperer_fond($flux) {
 	$fond = $flux['args']['fond'];
 	$contexte = $flux['data']['contexte'];
@@ -31,4 +38,35 @@ function reservations_champs_extras_recuperer_fond($flux) {
 
 
 	return $flux;
+}
+
+/**
+ * Permet d0intervenir sur la liste des saisies de champs extras concernant un objet donné.
+ *
+ * @pipeline declarer_champs_extras
+ * @param  array $flux Données du pipeline
+ * @return array       Données du pipeline
+ */
+function reservations_champs_extras_declarer_champs_extras ($saisies_tables) {
+	if (_request('exec') &&
+			$id_reservation = _request('id_reservation') AND
+			$id_reservation_formulaire = sql_getfetsel('id_reservation_formulaire','spip_reservations','id_reservation=' . $id_reservation)) {
+			include_spip('inc/reservations_champs_extras');
+			$sql = sql_select('type,configuration,titre',
+					'spip_reservation_formulaire_configurations_liens AS liens, spip_reservation_formulaire_configurations AS confs',
+					'liens.id_reservation_formulaire_configuration = confs.id_reservation_formulaire_configuration AND objet=' . sql_quote('reservation_formulaire') . ' AND id_objet=' . $id_reservation_formulaire);
+
+			while ($data = sql_fetch($sql)) {
+				$type = $data['type'];
+				if ($type =='rce_reservations') {
+					$configuration = json_decode($data['configuration'], true);
+				}
+			}
+
+		$saisies_tables['spip_reservations'] = rce_configuration_charger($saisies_tables['spip_reservations'], $configuration, 'reservation');
+	}
+
+
+
+	return $saisies_tables;
 }
