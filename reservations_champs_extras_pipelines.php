@@ -36,12 +36,11 @@ function reservations_champs_extras_recuperer_fond($flux) {
 		$flux['data']['texte'] = recuperer_fond('inclure/generer_saisies', $flux['data']['contexte']);
 	}
 
-
 	return $flux;
 }
 
 /**
- * Permet d0intervenir sur la liste des saisies de champs extras concernant un objet donné.
+ * Permet d'intervenir sur la liste des saisies de champs extras concernant un objet donné.
  *
  * @pipeline declarer_champs_extras
  * @param  array $flux Données du pipeline
@@ -65,8 +64,6 @@ function reservations_champs_extras_declarer_champs_extras ($saisies_tables) {
 
 		$saisies_tables['spip_reservations'] = rce_configuration_charger($saisies_tables['spip_reservations'], $configuration, 'reservation');
 	}
-
-
 
 	return $saisies_tables;
 }
