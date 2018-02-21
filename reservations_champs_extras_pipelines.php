@@ -62,7 +62,10 @@ function reservations_champs_extras_declarer_champs_extras ($saisies_tables) {
 				}
 			}
 
-		$saisies_tables['spip_reservations'] = rce_configuration_charger($saisies_tables['spip_reservations'], $configuration, 'reservation');
+		$saisies_tables['spip_reservations'] = rce_configuration_charger(
+				$saisies_tables['spip_reservations'],
+				$configuration,
+				'reservation');
 	}
 
 	return $saisies_tables;

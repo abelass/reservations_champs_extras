@@ -22,7 +22,7 @@ include_spip('inc/reservations_champs_extras');
  */
 function formulaire_configurations_rce_auteurs_dist($valeurs) {
 	$saisies = rce_saisies_objet('auteur');
-	
+
 	return array (
 		'nom' => _T('reservations_champs_extras:nom_formulaire_configuration_champs_extras_auteurs'),
 		'saisies' => $saisies,
