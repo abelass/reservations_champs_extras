@@ -1,7 +1,7 @@
 <paquet
 	prefix="reservations_champs_extras"
 	categorie="maintenance"
-	version="1.0.3"
+	version="1.0.4"
 	etat="test"
 	compatibilite="[3.1.6;3.2.*]"
 	logo="prive/themes/spip/images/reservations_champs_extras-64.png"

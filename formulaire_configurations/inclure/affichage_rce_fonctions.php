@@ -26,10 +26,9 @@ include_spip('inc/cextras');
 function rce_noms_champs($objet) {
 
 	$saisies = cextras_obtenir_saisies_champs_extras($objet);
-
 	$champs = array();
 	foreach ($saisies AS $champ => $donnees) {
-		$champs[$champ] = extraire_multi($donnees['options']['label']);
+		$champs[$donnees['options']['nom']] = extraire_multi($donnees['options']['label']);
 	}
 
 	return $champs;
