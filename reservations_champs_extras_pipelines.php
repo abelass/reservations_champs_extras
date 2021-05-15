@@ -3,7 +3,7 @@
  * Utilisations de pipelines par Réservations Champs Extras
  *
  * @plugin     Réservations Champs Extras
- * @copyright  2017
+ * @copyright  2017  - 2021
  * @author     Rainer
  * @licence    GNU/GPL
  * @package    SPIP\Reservations_champs_extras\Pipelines
