@@ -3,7 +3,7 @@
  * Utilisations de pipelines par Réservations Champs Extras
  *
  * @plugin     Réservations Champs Extras
- * @copyright  2017  - 2021
+ * @copyright  2017 - 2021
  * @author     Rainer
  * @licence    GNU/GPL
  * @package    SPIP\Reservations_champs_extras\Pipelines
@@ -48,6 +48,7 @@ function reservations_champs_extras_recuperer_fond($flux) {
  */
 function reservations_champs_extras_declarer_champs_extras ($saisies_tables) {
 	if (_request('exec') &&
+		isset($saisies_tables['spip_reservations']) &&
 			$id_reservation = _request('id_reservation') AND
 			$id_reservation_formulaire = sql_getfetsel('id_reservation_formulaire','spip_reservations','id_reservation=' . $id_reservation)) {
 			include_spip('inc/reservations_champs_extras');
@@ -62,11 +63,13 @@ function reservations_champs_extras_declarer_champs_extras ($saisies_tables) {
 				}
 			}
 
-		$saisies_tables['spip_reservations'] = rce_configuration_charger(
+			$saisies_tables['spip_reservations'] = rce_configuration_charger(
 				$saisies_tables['spip_reservations'],
 				$configuration,
-				'reservation');
-	}
+				'reservation'
+			);
+
+		}
 
 	return $saisies_tables;
 }
